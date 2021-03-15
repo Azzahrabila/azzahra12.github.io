@@ -1,0 +1,215 @@
+<html>
+<head>
+    <title>Rata-rata</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    html,
+               .box {
+                    width: 60%;
+                    border-radius: 5px;
+                    border: 1px solid #9b9b9b;
+                    padding: 20px 0px 20px 0px;
+                    margin-left: 20%;
+                }
+                .h2{
+                    font-family: calibri;
+                    font-weight: lighter;
+                    letter-spacing: 3px;
+                }
+                                .h3{
+                    font-family: calibri;
+                    font-weight: lighter;
+                    letter-spacing: 3px;
+                }
+                #bil1{
+                    padding: 5px;
+                }
+
+                #bil2{
+                    padding: 5px;
+                }
+                #hasil{
+                    color: black;
+                }
+                .tbl1{
+                    font-family: calibri;
+                }
+                .btn{
+                    padding: 10px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    border: 0px;
+                    color: black;
+                    background: #3b7fff;
+                }
+                body{
+                	height: 100%;
+                	width: 100%;
+                	font-family: 'lemon', cursive;
+                    background-color:pink;
+
+                }
+
+                a{
+                	text-decoration: none;
+                	color: Blue;
+                }
+
+                #banner{
+                	width: 100%;
+                	height: 70%;
+                	background-attachment: fixed;
+                	position: relative;
+                }
+                	#logo{
+                		width: 100%;
+                		position: absolute;
+                		z-index: 10;
+                		text-align: center;
+                	}
+                	#logo img {
+                		cursor: pointer;
+                		display: inline-block;
+                		width: 128px;
+                		height: 128px;
+                		border: 3px solid rgba(255,255,255,.5);
+                		border-radius: 50%;
+                	}
+                		#logo img:hover{
+                			border: 3px solid rgba(255,255,255,.7);
+                		}
+</style>
+
+    <script>
+            function Hitung(dat1,dat2,dat3){
+                var total,totalrat;
+                total = dat1+dat2+dat3;
+
+                totalrat = total / 3;
+                return totalrat;
+            }
+        </script>
+
+</head>
+<body>
+<div id="banner">
+    <header id="logo">
+        <p>
+        </p><h1>Tugas Javascript</h1>
+        <img src="index.jpg">
+        <br>
+        <a href="https://www.instagram.com/azzahrabilaa/">Contact</a>
+        <p></p>
+
+<div class="box">
+    <center>
+        <h2 class="h2">Statistik</h2>
+
+        <table class="tbl1">
+            <tr>
+                <td><label>Nilai-1</label></td>
+                <td>=</td>
+                <td><input type="text" id="nilai1" placeholder="Masukan angka"></td>
+            </tr>
+            <tr>
+                <td><label>Nilai-2</label></td>
+                <td>=</td>
+                <td><input type="text" id="nilai2" placeholder="Masukan angka"></td>
+            </tr>
+            <tr>
+                <td><label>Nilai-3</label></td>
+                <td>=</td>
+                <td><input type="text" id="nilai3" placeholder="Masukan angka"></td>
+            </tr>
+        </table>
+        <input type="button" id="btn" value="Hitung" class="btn" onClick="Ratarata()">
+        <input type="button" id="btn" value="Hapus" class="btn" onClick="Hapus()">
+        <br>
+        <tr>
+            <td><label>Rata-Rata</label></td>
+            <td>=</td>
+            <td><label id="rata_rata"></label></td>
+        </tr>
+        <br>
+        <tr>
+            <td><label>Nilai Tertinggi</label></td>
+            <td>=</td>
+            <td><label id="nilai_t"></label></td>
+        </tr>
+        <br>
+        <tr>
+            <td><label>Nilai Terendah</label></td>
+            <td>=</td>
+            <td><label id="nilai_tr"></label></td>
+        </tr>
+        <br>
+        <tr>
+            <td><label>Nilai Tengah</label></td>
+            <td>=</td>
+            <td><label id="median"></label></td>
+        </tr>
+
+    </center>
+</div>
+<script>
+
+</script>
+<script>
+          function InputData(Bilangan){
+            var data;
+              data = parseFloat(document.getElementById(Bilangan).value);
+            return data;
+          }
+
+          function Output_rata(data){
+            document.getElementById("rata_rata").innerHTML = data;
+          }
+
+          function Output_max(data){
+            document.getElementById("nilai_t").innerHTML = data;
+          }
+          function Output_min(data){
+            document.getElementById("nilai_tr").innerHTML = data;
+          }
+          function Output_med(data){
+            document.getElementById("median").innerHTML = data;
+          }
+
+          function Ratarata(){
+            //Deklarasi Variable
+            var dat1,dat2,dat3,ratarata,tinggi,rendah;
+
+            //Input
+            dat1  = InputData("nilai1");
+            dat2  = InputData("nilai2");
+            dat3  = InputData("nilai3");
+
+            //Proses
+            ratarata = Hitung(dat1,dat2,dat3);
+            tinggi =  Math.max(nilai1.value,nilai2.value,nilai3.value);
+            rendah =  Math.min(nilai1.value,nilai2.value,nilai3.value);
+            const median = arr => {
+            const mid = Math.floor(arr.length / 2),
+            number = [...arr].sort((a, b) => a - b);
+            return arr.length % 2 !== 0 ? number[mid] : (number[mid - 1] + number[mid]) / 2;
+            }; 
+            //OutPut
+            Output_rata(ratarata);
+            Output_max(tinggi);
+            Output_min(rendah);
+            Output_med(median([dat1,dat2,dat3]))
+           // document.getElementById("median").innerHTML = median([dat1,dat2,dat3]);
+          }
+
+          function Hapus() {
+    document.getElementById("nilai1").value = "";
+    document.getElementById("nilai2").value = "";
+    document.getElementById("nilai3").value = "";
+    location.reload()
+}
+
+      </script>
+</body>
+<h3 class="h3">Azzahra Zalzabila AR (D121191029)</h3>
+</html>
